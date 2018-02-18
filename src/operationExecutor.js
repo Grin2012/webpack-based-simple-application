@@ -30,7 +30,12 @@ class OperationExecutor {
     /**
      * Place your code here
      */
-    return null /* variable with result */;
+    const obj = arg;
+    let cloneObj = Object.assign(obj);
+    cloneObj.obj1.firstName = 'Olga';
+    cloneObj.obj1.lastName = 'Ivanova';
+    cloneObj.obj1.gender = 'female';
+    return {obj, cloneObj} /* variable with result */;
   }
 
   /**
@@ -43,7 +48,10 @@ class OperationExecutor {
     /**
      * Place your code here
      */
-    return null /* variable with result */;
+    let obj1 = arg.obj1;
+    let obj2 = arg.obj2;
+    let sumObj = {...arg.obj1, ...arg.obj2};
+    return {obj1, obj2, sumObj} /* variable with result */;
   }
 
   /**
@@ -56,8 +64,10 @@ class OperationExecutor {
     /**
      * Place your code here
      */
-    return null /* variable with result */;
-  }
+    let obj = arg;
+    obj.obj1.relatives.forEach(str => str['gender'] = 'undefined');
+    return obj /* variable with result */;
+      }
 
   /**
    * Fourth task of homework
@@ -69,8 +79,13 @@ class OperationExecutor {
     /**
      * Place your code here
      */
-    return null /* variable with result */;
+    let obj = arg.obj1;
+    let arrName = [];
+    obj.relatives.filter((gender) => {
+        return gender.gender === "female";
+    }).forEach((name) => {
+        arrName.push(`Hi, my dear ${name.firstName}.`);});
+    return arrName/* variable with result */;
   }
 }
-
 export default OperationExecutor;
