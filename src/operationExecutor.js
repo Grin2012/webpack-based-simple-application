@@ -51,6 +51,7 @@ class OperationExecutor {
     let obj1 = arg.obj1;
     let obj2 = arg.obj2;
     let sumObj = {...arg.obj1, ...arg.obj2};
+    sumObj.z = 17;
     return {obj1, obj2, sumObj} /* variable with result */;
   }
 
