@@ -30,11 +30,11 @@ class OperationExecutor {
     /**
      * Place your code here
      */
-    const obj = arg;
-    let cloneObj = Object.assign(obj);
-    cloneObj.obj1.firstName = 'Olga';
-    cloneObj.obj1.lastName = 'Ivanova';
-    cloneObj.obj1.gender = 'female';
+    const obj = arg.obj1;
+    let cloneObj = Object.assign({}, obj);
+    cloneObj.firstName = 'Olga';
+    cloneObj.lastName = 'Ivanova';
+    cloneObj.gender = 'female';
     return {obj, cloneObj} /* variable with result */;
   }
 
@@ -66,9 +66,12 @@ class OperationExecutor {
      * Place your code here
      */
     let obj = arg;
-    obj.obj1.relatives.forEach(str => str['gender'] = 'undefined');
+    var gender = function (lastName) {
+        return lastName[lastName.length-1] == 'a' ? 'female' : 'male';
+    }
+    obj.obj1.relatives.forEach(str => str.gender = gender (str.lastName));
     return obj /* variable with result */;
-      }
+  }
 
   /**
    * Fourth task of homework
