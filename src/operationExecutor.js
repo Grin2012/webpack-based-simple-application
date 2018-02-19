@@ -67,9 +67,9 @@ class OperationExecutor {
      */
     let obj = arg;
     var gender = function (lastName) {
-        return lastName[lastName.length-1] == 'a' ? 'female' : 'male';
+        return lastName[lastName.length-1] === 'a' ? 'female' : 'male';
     }
-    obj.obj1.relatives.forEach(str => str.gender = gender (str.lastName));
+    obj.obj1.relatives.forEach(str => {str.gender = gender (str.lastName)});
     return obj /* variable with result */;
   }
 
@@ -83,13 +83,10 @@ class OperationExecutor {
     /**
      * Place your code here
      */
-    let obj = arg.obj1;
-    let arrName = [];
-    obj.relatives.filter((gender) => {
-        return gender.gender === "female";
-    }).forEach((name) => {
-        arrName.push(`Hi, my dear ${name.firstName}.`);});
-    return arrName/* variable with result */;
+      return arg.obj1.relatives.reduce((arrName, str) => {
+          str.gender === 'female' ? arrName = [...arrName,(`Hello, my dear ${ str.firstName}!`)] : null;
+          return arrName;
+      }, []) /* variable with result */;
   }
 }
 export default OperationExecutor;
